@@ -1,3 +1,4 @@
+```sh
 # server
 apt install -y nfs-server
 
@@ -14,3 +15,4 @@ kubectl apply -f deploy.yaml
 
 # pvc spec
 storageClassName: managed-nfs-storage
+```
