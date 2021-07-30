@@ -16,6 +16,12 @@ spec:
       labels:
         app: registry
     spec:
+      nodeName: m1
+      # nodeSelector:
+      #   app: registry
+      # tolerations:
+      # - key: "node-role.kubernetes.io/master"
+      #   effect: "NoSchedule"
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       restartPolicy: Always
