@@ -7,12 +7,19 @@ metadata:
   name: registry
   namespace: registry
 spec:
+  hostNetwork: true
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
   containers:
   - image: registry:latest
     name: registry
     ports:
     - containerPort: 5000
     resources: {}
-  hostNetwork: true
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+    volumeMounts:
+      - name: registry-volume
+        mountPath: /var/lib/registry/docker/registry/v2
+  volumes:
+    - name: registry-volume
+      persistentVolumeClaim:
+        claimName: registry-pvc
